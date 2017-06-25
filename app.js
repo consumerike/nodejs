@@ -1,13 +1,27 @@
 var express = require('express');
-app.set('view engine', 'ejs');
-
+var bodyParser = require('body-parser');
 var app = express();
+
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
+app.set('view engine', 'ejs');
+app.use('/assets', express.static('assets'));
 app.get('/', (req, res) => {
     res.send('this is the express string');
 });
 
+app.get('/', (req, res) => {
+    res.render('index');
+});
+
 app.get('/contact', (req, res) => {
-    res.send('this is the contact page..');
+    console.log("query string is: ",req.query );
+    res.render('contact', {qs: req.query});
+});
+
+app.post('/contact', urlencodedParser, (req, res) => {
+    console.log("query string is: ",req.query );
+    res.render('contact-success', {data: req.body});
 });
 
 app.get('/profile/:name', (req, res) =>{
