@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        body{background: skyblue; font-family: verdana; color:white; padding: 30px;}
+        h1{font-size: 48px; text-transform: }
+        h2{font-size: 30px; text-transform: }
+    </style>
+    <title>This is the title</title>
+</head>
+<body>
+    <h1>Welcome <%= person %>!</h1>
+    <p><strong>Age: <%= data.age %></strong>.</p>
+    <p><strong>Job: <%= data.job %></strong>.</p>
+    <h2>Hobbies</h2>
+    <ul>
+        <% data.hobbies.ForEach((item) =>{ %>
+            <li><%= item %></li>
+        <% }) %> 
+    </ul>
+</body>
+</html>
